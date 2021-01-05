@@ -3,6 +3,8 @@ package com.example.workout;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 // creating a table for the room database
 @Entity(tableName = "note_table")
 public class Note {
@@ -17,17 +19,22 @@ public class Note {
 
     private String description;
 
-    private int priority;
+   // private int priority;
+
+    // 03.01.2021 date initialiert
+    private String date;
 
     // using "generate" android studio function to automatically generate code
     // right click in code (or ALT+Einf) click generate ...
 
 
     // Constructor automatically build with generate function
-    public Note(String title, String description, int priority) {
+    // public Note(String title, String description, int priority) {
+    public Note(String title, String description, String date) {
         this.title = title;
         this.description = description;
-        this.priority = priority;
+        this.date = date;
+        //this.priority = priority;
     }
 
     //setter method
@@ -49,7 +56,7 @@ public class Note {
         return description;
     }
 
-    public int getPriority() {
-        return priority;
-    }
+    public String getDate() { return date;}
+
+    //public int getPriority() {  return priority;   }
 }
