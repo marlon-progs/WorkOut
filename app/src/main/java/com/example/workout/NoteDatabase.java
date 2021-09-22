@@ -8,9 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 @Database(entities = Note.class,version = 2)
+@TypeConverters({DateConverter.class})
 public abstract class NoteDatabase extends RoomDatabase {
 
     private static NoteDatabase instance;
@@ -49,7 +51,7 @@ public abstract class NoteDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... voids){
 
-            noteDao.insert(new Note("21.12.2020", "Abs-Übung", "date" ));
+            //noteDao.insert(new Note("21.12.2020", "Abs-Übung", "date" ));
 
             return null;
         }

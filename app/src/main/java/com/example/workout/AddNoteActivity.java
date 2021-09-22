@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.time.Year;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE =
@@ -64,7 +66,7 @@ public class AddNoteActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.set(datePicker.getYear(),datePicker.getMonth(),datePicker.getDayOfMonth());
         String currentDateString = DateFormat.getDateInstance().format(calendar.getTime());
-
+        Log.i(currentDateString,"currentDateString Value:");
 
         if (title.trim().isEmpty() || description.trim().isEmpty()) {
             Toast.makeText(this, "Please insert a title and description", Toast.LENGTH_SHORT).show();
@@ -74,6 +76,8 @@ public class AddNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_TITLE, title);
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_DATE, currentDateString);
+       // data.putExtra(EXTRA_DATE, calendar.getTimeInMillis());
+        //exemple intent.putExtra("myDateKey", myDate.getTimeInMillis());
         setResult(RESULT_OK, data);
         finish();
     }

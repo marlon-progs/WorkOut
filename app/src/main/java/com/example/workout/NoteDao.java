@@ -29,5 +29,6 @@ public interface NoteDao {
     @Query("SELECT * FROM note_table ORDER BY date DESC")
     LiveData<List<Note>> getAllNotes();
 
-
+// desc or asc //"date(date) DESC"
+    //stringToDate(date,'d%.m%.y%')
 }
