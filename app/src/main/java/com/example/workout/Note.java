@@ -3,8 +3,13 @@ package com.example.workout;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 // creating a table for the room database
 @Entity(tableName = "note_table")
@@ -20,7 +25,7 @@ public class Note {
 
     private String description;
 
-   // private int priority;
+    // private int priority;
 
     // 03.01.2021 date initialiert
     private String date;
@@ -57,7 +62,18 @@ public class Note {
         return description;
     }
 
-    public String getDate() { return date;}
+    public String getDate() {
+        return date;
+    }
+
+    public Date getDateAsDateObject() {
+        try {
+            return new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH).parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        throw new AssertionError();
+    }
 
     //public int getPriority() {  return priority;   }
 }
